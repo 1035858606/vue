@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">		
+			<input type="text" name="" id="" value="" v-model="newtodo" v-on:keyup.enter = "add" />
+			<ul>
+				<li v-for="todo in das">
+					<span>{{todo.message}}</span>
+					<input type="button" name="" id="" value="x" v-on:click="removeTodo($index)" />
+				</li>
+			</ul>
+			
+		</div>
+		
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+				
+				new Vue({
+					el:"#app",
+					
+					data:{
+						newtodo:"",
+						das:[
+						{message:"h"},
+						{message:"x"}
+						]
+					},
+					methods:{
+						add:function  () {
+							   var text = this.newtodo.trim()
+						      if (text) {
+						        this.das.push({ message: text })
+						        this.newtodo = ''
+						      }						
+						},
+					     removeTodo: function (index) {
+						      this.das.splice(index, 1)
+						    }
+					}
+					
+				})
+		</script>
+	</body>
+</html>
